@@ -1,4 +1,4 @@
-calcBatchEffect.p <- function(data = ...) {
+calcBatchEffect.p <- function(data) {
     require(tidyverse)
     feature_intensity <- data %>% pull(intensity)
     injection_sequence <- data %>% pull(injection_sequence)
@@ -8,13 +8,13 @@ calcBatchEffect.p <- function(data = ...) {
 }
 
 calcBatchEffect.vcf <- function(data = ...) {
-    
+
 }
 
 
 calcBatchEffect.CVQC <- function(data = ..., QC_index = ...) {
     data_n <- data %>% dplyr::group_by(feature) %>% tidyr::nest()
-    
+
     calcBatchEffect.CVQC_one <- function(data = ...) {
         intensity_QC_index <- data[QC_index, ] %>% pull(intensity)
         CVQC <- sd(intensity_QC_index)/mean(intensity_QC_index)
