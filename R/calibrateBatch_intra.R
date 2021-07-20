@@ -42,7 +42,7 @@ calibrateBatch.intra.rlm <- function(data = ...,
     return(data_n_c)
 }
 
-calibrateBatch.intra.rlm.group <- function(data = ...,
+calibrateBatch.intra.rlm.group <- function(data,
                                            intensity = intensity,
                                            injection_sequence = injection_sequence,
                                            feature = feature,
