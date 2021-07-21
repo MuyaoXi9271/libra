@@ -38,7 +38,7 @@ calibrateBatch.intra.rlm <- function(data = ...,
     data_n <- data %>% dplyr::group_by(!! feature) %>% tidyr::nest()
     data_n_c <- data_n %>%
         dplyr::mutate(data_calibrated = purrr::map(data, calibrateBatch.intra.rlm.single.feature, intensity = !!intensity, injection_sequence = !! injection_sequence)) %>%
-        dplyr::select(-data) %>% tidyr::unnest(cols = c(data_calibrated))
+        tidyr::unnest(cols = c(data, data_calibrated))
     return(data_n_c)
 }
 
