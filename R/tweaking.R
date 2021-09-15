@@ -24,7 +24,7 @@ rm_feature.bird <- function(data.df = ...,
                                            TRUE,
                                            FALSE))
   message(paste("Fraction of Feature Removed (based on birds):", round(mean(data$bird),2)))
-  data_output <- data %>% select(-bird)
+  data_output <- data %>% filter(as.numeric(bird) == 0) %>% select(-bird)
   return(data_output)
 }
 
